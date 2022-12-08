@@ -5,10 +5,13 @@ class Nave {
   float balaX; // recebe a posição X da bola
   boolean atirando; // atirando ou não
   PImage imgNave;
+  
+  int velocidade; // [new] adicionada para deixar o movimento da nave mais rápido
 
   Nave () {
     posX = width/2;
     posY = height*0.67;
+    velocidade = 5;
     balas = 100;
     atirando = false;
     imgNave = loadImage("nave.png");
@@ -35,13 +38,13 @@ class Nave {
     
     // Movimentação
     if (keyPressed) {
-      if (keyCode == LEFT)posX-=5;
-      if (keyCode == RIGHT)posX+=5 ;
+      if (keyCode == LEFT)posX-=velocidade;
+      if (keyCode == RIGHT)posX+=velocidade ;
     }
   }
 
   void atirar () {
-    println(balas);
+    //println(balas);
     // Se tiver balas atire
     if (balas != 0) {
       atirando = true;
